@@ -5,6 +5,9 @@ public enum Sex {
 
     private String sex;
 
+    /**
+     * @param sex - строка обозначения пола person-a
+     */
     Sex(String sex) {
         this.sex = sex;
     }

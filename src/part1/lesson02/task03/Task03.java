@@ -1,26 +1,45 @@
 package part1.lesson02.task03;
 
-import org.apache.commons.lang3.RandomStringUtils;
+import part1.lesson02.task03.comparator.PersonAgeComparator;
+import part1.lesson02.task03.comparator.PersonNameComparator;
+import part1.lesson02.task03.comparator.PersonSexComparator;
+import part1.lesson02.task03.util_and_exeption.DuplicatePersonException;
 
 import java.util.Arrays;
-import java.util.Calendar;
-import java.util.Random;
+import java.util.Comparator;
 
 public class Task03 {
-    private static int numOfElements = 10000;
-    private static Person[] persons = new Person[numOfElements];
 
     public static void main(String[] args) {
+
         long startTime = System.currentTimeMillis();
-        for (int i = 0; i < numOfElements; i++) {
-            persons[i] = new Person(Utils.utilsRandAge(),Utils.utilsRandSex(),Utils.utilsRandName());
-            System.out.println(i + " = " + persons[i].toString());
+        MakePersons makePersons = new MakePersons();
+        try {
+            Sort01 sort01 = new Sort01();
+            sort01.bubbleSorter();
+        } catch (DuplicatePersonException e) {
+            e.printStackTrace();
         }
         long totalTime = System.currentTimeMillis() - startTime;
-        //int seconds = cal.get(Calendar.SECOND);
-        System.out.println(totalTime);
+        System.out.println("Затраченное время " + totalTime/1000 + " с.");
+        Comparator<Person> pcomp = new PersonSexComparator().thenComparing(new PersonAgeComparator())
+                .thenComparing(new PersonNameComparator());
+        startTime = System.currentTimeMillis();
+        try {
+            Person[] persons = makePersons.getPersons();
+            Arrays.sort(persons,pcomp);
+            for (int i = 0; i < makePersons.getNumOfElements(); i++) {
+                System.out.println(i + " = " + persons[i]);
+            }
+        } catch (DuplicatePersonException e) {
+            e.printStackTrace();
+        }
+        totalTime = System.currentTimeMillis() - startTime;
+        System.out.println("Затраченное время " + totalTime + " мс.");
 
+        //int seconds = cal.get(Calendar.SECOND);
     }
+
 }
 
 //TODO: Задание 3. Дан массив объектов Person. Класс Person характеризуется полями age (возраст, целое число 0-100),

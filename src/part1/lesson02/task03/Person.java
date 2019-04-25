@@ -1,12 +1,14 @@
 package part1.lesson02.task03;
 
-import javax.jnlp.PersistenceService;
-import java.util.Comparator;
+import java.util.Objects;
 
 public class Person {
     private int age;
     private Sex sex;
     private String name;
+
+    public Person() {
+    }
 
     public Person(int age, Sex sex, String name) {
         this.age = age;
@@ -14,14 +16,23 @@ public class Person {
         this.name = name;
     }
 
+    /**
+     * @return age - возвращает возраст
+     */
     public int getAge() {
         return age;
     }
 
+    /**
+     * @return sex - возвращает пол
+     */
     public Sex getSex() {
         return sex;
     }
 
+    /**
+     * @return name - возвращает имя
+     */
     public String getName() {
         return name;
     }
