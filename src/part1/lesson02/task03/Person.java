@@ -1,7 +1,5 @@
 package part1.lesson02.task03;
 
-import java.util.Objects;
-
 public class Person {
     private int age;
     private Sex sex;

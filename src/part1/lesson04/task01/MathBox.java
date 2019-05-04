@@ -2,26 +2,9 @@ package part1.lesson04.task01;
 
 import java.util.*;
 
-public class MathBox <T> {
-    private List<T> list = new ArrayList<>();
-    private Double sum = 0.0;
-
-    public MathBox(Number[] numberArray) {
-        for (Number num :numberArray) {
-            list.add((T)num);
-        }
-    }
-
-    public void summator() {
-        for (T val : list) {
-            sum += (Double) val;
-        }
-        System.out.println(sum);
-    }
-
-    public void splitter(int divider) {
-
-    }
+public class MathBox {
+    private List<Number> list = new ArrayList<>();
+    private double sum;
 
     @Override
     public boolean equals(Object o) {
@@ -41,5 +24,36 @@ public class MathBox <T> {
         return "MathBox{" +
                 "list=" + list +
                 '}';
+    }
+
+    public MathBox(Number[] numberArray) {
+        for (Number num : numberArray) {
+            list.add(num);
+        }
+    }
+
+    public void summator() {
+        Number[] numArray = new Number[list.size()];
+        list.toArray(numArray);
+        for (Number num : numArray) {
+            sum += num.doubleValue();
+        }
+        /*for (Number val : list) {
+            sum += (double) val;
+        }*/
+        System.out.println(sum);
+    }
+
+    public void splitter(Number divider) {
+        for (int i = 0; i < list.size(); i++) {
+            Number dividend = list.get(i);
+            list.set(i, dividend.doubleValue()/divider.doubleValue());
+        }
+    }
+
+    public void checkValue(Number val) {
+        if(list.contains(val)){
+            list.remove(val);
+        }
     }
 }

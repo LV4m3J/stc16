@@ -1,7 +1,5 @@
 package part1.lesson02.task01;
 
-import java.sql.SQLClientInfoException;
-
 public class Task01 {
     private static String str;
 
@@ -38,6 +36,7 @@ public class Task01 {
     /**
      * Выбрасываем свое собственное исключение
      * @throws GetOwnException
+     * Имя метода указать полностью
      */
     private void getTask01Ex() throws GetOwnException{
         throw new GetOwnException("You have got your own exception.");
@@ -46,8 +45,8 @@ public class Task01 {
 }
 
 
-// TODO: 20.04.2019 Задание 1. Написать программу ”Hello, World!”. В ходе выполнения программы она должна выбросить исключение и завершиться с ошибкой.
-//
-//Смоделировав ошибку «NullPointerException»
-//Смоделировав ошибку «ArrayIndexOutOfBoundsException»
-//Вызвав свой вариант ошибки через оператор throw
+// TODO: 20.04.2019 Задание 1. Написать программу ”Hello, World!”.
+//  В ходе выполнения программы она должна выбросить исключение и завершиться с ошибкой.
+//  Смоделировав ошибку «NullPointerException»
+//  Смоделировав ошибку «ArrayIndexOutOfBoundsException»
+//  Вызвав свой вариант ошибки через оператор throw

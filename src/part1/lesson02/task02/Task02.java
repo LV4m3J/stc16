@@ -1,7 +1,5 @@
 package part1.lesson02.task02;
 
-import java.security.NoSuchAlgorithmException;
-
 public class Task02 {
 
     public static void main(String[] args) {
