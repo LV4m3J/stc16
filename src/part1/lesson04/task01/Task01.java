@@ -18,13 +18,17 @@ public class Task01 {
                 }
             }
         }
-
-        MathBox mb = new MathBox(numArr);
+        /*MathBox mb = new MathBox(numArr);
         System.out.println(mb.toString());
         mb.summator();
         mb.checkValue(5);
         mb.splitter(2);
-        System.out.println(mb.toString());
+        System.out.println(mb.toString());*/
+
+        BoxMath<Double> bm = new BoxMath<>(numArr);
+        System.out.println(bm.toString());
+        System.out.println(bm.summator());
+        bm.splitter(2.0);
     }
 
 }
