@@ -5,6 +5,10 @@ import java.util.ArrayList;
 public class ObjectBox {
     private ArrayList<Object> aro = new ArrayList<>();
 
+    public ArrayList<Object> getAro() {
+        return aro;
+    }
+
     /**
      * addObject метод добавляет передаваемый параметр в коллекцию
      * @param o - объект добавляемый в коллекцию
@@ -20,6 +24,9 @@ public class ObjectBox {
     public void deleteObject(Object o){
         if (aro.contains(o)){
             aro.remove(o);
+            System.out.println("Объект удален.");
+        } else {
+            System.out.println("Объект не найден!");
         }
     }
 
