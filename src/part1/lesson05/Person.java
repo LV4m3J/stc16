@@ -7,20 +7,38 @@ public class Person {
     private Sex sex;
     private String name;
 
+    /**
+     * Конструктор хозяина
+     * @param age - возраст
+     * @param sex - пол
+     * @param name - имя
+     */
     public Person(int age, Sex sex, String name) {
         this.age = age;
         this.sex = sex;
         this.name = name;
     }
 
+    /**
+     * Getter поля age
+     * @return - интовое занчение возраста
+     */
     public Integer getAge() {
         return age;
     }
 
+    /**
+     * Getter поля sex
+     * @return - из класса Sex пол
+     */
     public Sex getSex() {
         return sex;
     }
 
+    /**
+     * Getter поля name
+     * @return - строку имя
+     */
     public String getName() {
         return name;
     }

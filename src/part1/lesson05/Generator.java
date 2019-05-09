@@ -25,16 +25,4 @@ public class Generator {
         }
         return petList;
     }
-
-    /*public static List<Person> personListGenerator() {
-        return new ArrayList<>(Arrays.asList(
-                new Person(7,Sex.MAN,"Vasya"),
-                new Person(14,Sex.WOMAN,"Nastya"),
-                new Person(13,Sex.MAN,"Petya"),
-                new Person(11,Sex.WOMAN,"Masha"),
-                new Person(10,Sex.MAN,"Jenya"),
-                new Person(32,Sex.WOMAN,"Alisa")
-        ));
-    }*/
-
 }

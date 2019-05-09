@@ -49,10 +49,11 @@ public class PetLibrary {
     public void setNewPetValue(int identifier, String newPetName, Person newPerson, double newWeight) {
         for (Map.Entry<String,Pet> petEntry: petMap.entrySet()) {
             if(petEntry.getValue().getId() == identifier) {
-                petEntry.getValue().toString();
+                System.out.println(petEntry.getValue().toString());
                 petEntry.getValue().setPetName(newPetName);
                 petEntry.getValue().setPerson(newPerson);
                 petEntry.getValue().setWeight(newWeight);
+                System.out.println(petEntry.getValue().toString());
             }
         }
     }
@@ -61,6 +62,6 @@ public class PetLibrary {
      * вывод на экран списка животных в отсортированном порядке
      */
     public void printSortedPetLibrary() {
-        petMap.entrySet().stream().sorted(Map.Entry.<String,Pet>comparingByValue().reversed()).forEach(System.out::println);
+        petMap.entrySet().stream().sorted(Map.Entry.<String,Pet>comparingByValue()).forEach(System.out::println);
     }
 }

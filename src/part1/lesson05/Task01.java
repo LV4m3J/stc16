@@ -8,9 +8,9 @@ public class Task01 {
         for (Pet pet: Generator.petListGenerator()) {
             petLib.addPet(pet);
         }
-
-        petLib.setNewPetValue(7,"Pet_7",new Person(12,Sex.WOMAN,"Anjella"),7.407825081161966);
-
+        System.out.println("");
+        petLib.setNewPetValue(7,"Pet_06",new Person(16,Sex.WOMAN,"Darya"),7.407825081161966);
+        System.out.println("");
         System.out.println(petLib.searchPet("Pet_7"));
         System.out.println(petLib.searchPet("Pet_10"));
 
@@ -18,7 +18,6 @@ public class Task01 {
 
     }
 }
-
 
 //TODO Разработать программу – картотеку домашних животных. У каждого животного
 // есть уникальный идентификационный номер, кличка, хозяин (объект класс Person с полями – имя, возраст, пол), вес.

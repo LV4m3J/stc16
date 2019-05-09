@@ -4,7 +4,6 @@ public enum Sex {
     MAN("Мужчина"), WOMAN("Женщина");
 
     private String sex;
-
     /**
      * @param sex - строка обозначения пола person-a
      */
