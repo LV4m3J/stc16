@@ -7,11 +7,9 @@ import java.util.concurrent.*;
 
 public class Task01 {
 
-    //private static ExecutorService executorService = Executors.newFixedThreadPool(4);
     private static ExecutorService forkJoinPool = Executors.newWorkStealingPool();
 
     public static void main(String[] args) {
-        List<Callable<String>> task = new ArrayList<>();
         Factorial factorial = new Factorial();
         Random random = new Random();
         int[] randNumb = new int[10];
@@ -30,6 +28,7 @@ public class Task01 {
         /**
          * Многопоточный расчет
          */
+        List<Callable<String>> task = new ArrayList<>();
         try {
             for (int a:randNumb) {
                 task.add(()->factorial.getFactorial(a));
@@ -48,14 +47,3 @@ public class Task01 {
 
     }
 }
-
-//TODO Дан массив случайных чисел. Написать программу для вычисления факториалов всех элементов массива.
-// Использовать пул потоков для решения задачи.
-// Особенности выполнения:
-// Для данного примера использовать рекурсию - не очень хороший вариант, т.к. происходит большое выделение памяти, очень вероятен StackOverFlow.
-// Лучше перемножать числа в простом цикле при этом создавать объект типа BigInteger
-// По сути, есть несколько способа решения задания:
-// 1) распараллеливать вычисление факториала для одного числа
-// 2) распараллеливать вычисления для разных чисел
-// 3) комбинированный
-// При чем вычислив факториал для одного числа, можно запомнить эти данные и использовать их для вычисления другого, что будет гораздо быстрее
