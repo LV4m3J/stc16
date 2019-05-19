@@ -10,28 +10,34 @@ public class Task01 {
     //private static ExecutorService executorService = Executors.newFixedThreadPool(4);
     private static ExecutorService forkJoinPool = Executors.newWorkStealingPool();
 
+
     public static void main(String[] args) {
-        List<Callable<Object>> task = new ArrayList<>();
+        List<Callable<String>> task = new ArrayList<>();
         Factorial factorial = new Factorial();
         Random random = new Random();
         int[] randNumb = new int[10];
         long startTime = System.currentTimeMillis();
+        /**
+         * 1 поточный расчет
+         */
         for (int i = 0; i < randNumb.length; i++) {
             randNumb[i] = random.nextInt(10)+1;
-            //System.out.println(randNumb[i] + " факториал = " + factorial.getFactorial(randNumb[i]));
+            System.out.println(randNumb[i] + " факториал = " + factorial.getFactorial(randNumb[i]));
         }
         long totalTime = System.currentTimeMillis() - startTime;
         System.out.println("Затраченное время " + totalTime + " мс.");
         startTime = System.currentTimeMillis();
 
+        /**
+         * Многопоточный расчет
+         */
         try {
             for (int a:randNumb) {
                 task.add(()->factorial.getFactorial(a));
             }
-            //System.out.println(forkJoinPool.invokeAll(task));
-            List<Future<Object>> futureList = forkJoinPool.invokeAll(task);
-            for (Future<Object> f : futureList) {
-                System.out.println(f.get().toString());
+            List<Future<String>> futureList = forkJoinPool.invokeAll(task);
+            for (Future<String> f : futureList) {
+                System.out.println(f.get());
             }
         } catch (InterruptedException | ExecutionException ex) {
             ex.printStackTrace();
