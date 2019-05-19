@@ -10,7 +10,6 @@ public class Task01 {
     //private static ExecutorService executorService = Executors.newFixedThreadPool(4);
     private static ExecutorService forkJoinPool = Executors.newWorkStealingPool();
 
-
     public static void main(String[] args) {
         List<Callable<String>> task = new ArrayList<>();
         Factorial factorial = new Factorial();

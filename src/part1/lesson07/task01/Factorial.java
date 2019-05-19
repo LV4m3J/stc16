@@ -4,7 +4,7 @@ import java.math.BigInteger;
 
 class Factorial {
     /**
-     *
+     * getFactorial
      * @param num - целочисленное значение расчитываемого числа
      * @return - факториал числа в виде строки
      */
