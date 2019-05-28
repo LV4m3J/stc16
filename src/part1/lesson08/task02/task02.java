@@ -12,4 +12,3 @@ public class task02 {
         System.out.println(serial.deSerialize("src\\part1\\lesson08\\task02\\school1.bin"));
     }
 }
-//TODO Предусмотреть работу c любыми типами полей (полями могут быть ссылочные типы).
