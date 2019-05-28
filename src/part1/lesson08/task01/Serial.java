@@ -1,5 +1,7 @@
 package part1.lesson08.task01;
 
+import part1.lesson08.task02.School;
+
 import java.io.*;
 
 public class Serial implements Serializer {
@@ -17,12 +19,10 @@ public class Serial implements Serializer {
 
     @Override
     public Object deSerialize(String file) {
-        Library library = null;
+        Object object = null;
         try(FileInputStream fis = new FileInputStream(file);
             ObjectInputStream ois = new ObjectInputStream(fis)) {
-
-            library = (Library) ois.readObject();
-            return library;
+            object = ois.readObject();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (FileNotFoundException e) {
@@ -30,6 +30,6 @@ public class Serial implements Serializer {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return library;
+        return object;
     }
 }
