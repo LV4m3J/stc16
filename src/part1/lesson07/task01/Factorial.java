@@ -1,6 +1,7 @@
 package part1.lesson07.task01;
 
 import java.math.BigInteger;
+import java.util.stream.Stream;
 
 class Factorial {
     /**
