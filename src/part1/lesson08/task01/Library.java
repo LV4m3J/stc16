@@ -1,14 +1,18 @@
 package part1.lesson08.task01;
 
+import part1.lesson08.task02.School;
+
 import java.io.Serializable;
 import java.util.Arrays;
 
-public class Library implements Serializable {
+public class Library extends School implements Serializable {
     private String books;
     private int[] readingRooms;
     private boolean isOpen;
 
     private static final long serialVersionId = 1L;
+    public Library() {
+     }
 
     public Library(String books, int[] readingRooms, boolean isOpen) {
         this.books = books;
