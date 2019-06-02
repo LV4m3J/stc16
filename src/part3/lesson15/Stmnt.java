@@ -3,8 +3,13 @@ package part3.lesson15;
 import java.sql.*;
 
 public class Stmnt {
-    public void execStmnt(Connection connection) throws SQLException {
+    /**
+     *
+     * @param connection - connection to db
+     * @throws SQLException
+     */
 
+    public void execStmnt(Connection connection) throws SQLException {
         //Batch process
         Statement statement = connection.createStatement();
         statement.addBatch("truncate table stc16.stc16schema.users cascade");
