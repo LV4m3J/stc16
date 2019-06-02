@@ -7,18 +7,17 @@ import java.sql.Statement;
 
 public class SavePoint {
     public void savePoint(Connection connection) {
-        Statement statement = null;
-        try {
+        try (Statement statement = connection.createStatement()){
             connection.setAutoCommit(false);
-            statement = connection.createStatement();
-            statement.executeUpdate("insert into stc16.stc16schema.users_role values (1,1,1)");
+            statement.execute("truncate table stc16.stc16schema.users_role");
+            statement.executeUpdate("insert into stc16.stc16schema.users_role(user_id, role_id) values (1,1)");
             Savepoint sp = connection.setSavepoint();
-            statement.executeUpdate("insert into stc16.stc16schema.users_role values (2,2,2)");
+            statement.executeUpdate("insert into stc16.stc16schema.users_role(user_id, role_id) values (2,2)");
 
-            statement.executeUpdate("insert into stc16.stc16schema.users_role values (3,3,3)");
+            statement.executeUpdate("insert into stc16.stc16schema.users_role(user_id, role_id) values (3,3)");
             Savepoint spA = connection.setSavepoint();
             //psql exception
-            statement.executeUpdate("insert into stc16.stc16schema.users_role values (4,4,4)");
+            statement.executeUpdate("insert into stc16.stc16schema.users_role(user_id, role_id) values (4,4)");
         } catch (SQLException e) {
             try {
                 System.out.println("Transaction is being rolled back.");
@@ -30,9 +29,6 @@ public class SavePoint {
         } finally {
             try {
                 connection.commit();
-                if (statement != null) {
-                    statement.close();
-                }
             } catch (SQLException e) {
                 e.printStackTrace();
             }
