@@ -1,4 +1,5 @@
 create tablespace stc16space location 'J:\dbs\stc16';
+--create tablespace stc16space location '/Library/Postgresql/10/data';
 create database stc16 tablespace stc16space;
 alter database stc16 owner to postgres;
 CREATE SCHEMA stc16schema;

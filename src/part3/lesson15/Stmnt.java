@@ -13,6 +13,9 @@ public class Stmnt {
         //Batch process
         Statement statement = connection.createStatement();
         statement.addBatch("truncate table stc16.stc16schema.users cascade");
+        statement.addBatch("ALTER SEQUENCE users_id_seq RESTART WITH 1");
+        statement.addBatch("ALTER SEQUENCE role_id_seq RESTART WITH 1");
+        statement.addBatch("ALTER SEQUENCE users_role_id_seq RESTART WITH 1");
         statement.addBatch("insert into stc16.stc16schema.users(name, birthday, login_id, city, email, description) " +
                 "values ('batman',to_date('1993-03-30','yyyy-mm-dd'),1,'Archam','bat@mail.arc','black_knight')");
         statement.addBatch("insert into stc16.stc16schema.users(name, birthday, login_id, city, email, description) " +
