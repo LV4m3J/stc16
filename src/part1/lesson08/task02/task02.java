@@ -12,3 +12,5 @@ public class task02 {
         System.out.println(serial.deSerialize("src\\part1\\lesson08\\task02\\school1.bin"));
     }
 }
+
+//

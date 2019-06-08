@@ -10,7 +10,13 @@ import java.sql.SQLException;
 
 public class Task01 {
     public static void main(String[] args) {
-        Logger logger = Logger.getLogger(Task01.class.getName());
+        Task01 task01 = new Task01();
+        task01.start();
+    }
+
+    void start() {
+        //Logger logger = Logger.getLogger(Task01.class.getName());
+        Logger logger = Logger.getLogger(this.getClass().getName());
         ConDB condb = new ConDB();
         Connection connection = null;
         Stmnt st = new Stmnt();
