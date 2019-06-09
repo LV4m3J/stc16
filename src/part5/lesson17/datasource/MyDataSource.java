@@ -9,7 +9,10 @@ import java.io.IOException;
 import java.util.Properties;
 
 public class MyDataSource {
-
+    /**
+     *
+     * @return datasource connection
+     */
     public static DataSource getPostgresDataSource() {
         PGSimpleDataSource pgsds = null;
         Properties props = new Properties();

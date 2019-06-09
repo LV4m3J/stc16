@@ -12,6 +12,13 @@ public class MyStatements {
     private DataSource ds = MyDataSource.getPostgresDataSource();
     private Connection connection;
 
+    /**
+     *
+     * @param name - some name
+     * @param id - id
+     * @return fetch count of changed rows
+     */
+
     public int myCreateStatements(String name, int id) {
         int result = 0;
         PreparedStatement ps = null;
