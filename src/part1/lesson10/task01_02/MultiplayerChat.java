@@ -2,7 +2,11 @@ package part1.lesson10.task01_02;
 
 public class MultiplayerChat {
 
-
+    public static void main(String[] args) {
+        ChatServer chatServer = new ChatServer();
+        Thread serverThread = new Thread(chatServer);
+        serverThread.start();
+    }
 }
 
 //todo Разработать приложение - многопользовательский чат, в котором участвует произвольное количество клиентов.

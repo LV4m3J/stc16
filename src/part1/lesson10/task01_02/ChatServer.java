@@ -1,39 +1,29 @@
 package part1.lesson10.task01_02;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.LinkedList;
-import java.util.List;
 
-public class ChatServer {
+public class ChatServer implements Runnable {
 
-    private static final int SERVER_PORT = 25025;
-    private static List<ClientListener> chatClientList = new LinkedList<>();
+    public static final int SERVER_PORT = 25025;
 
-    public static int getServerPort() {
-        return SERVER_PORT;
-    }
 
-    public static List<ClientListener> getChatClientList() {
-        return chatClientList;
-    }
+    @Override
+    public void run() {
+        try(ServerSocket serverSocket = new ServerSocket(SERVER_PORT);
+            Socket socket = serverSocket.accept();
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()))) {
 
-    public static void main(String[] args) {
-        Socket socket = null;
-        try(ServerSocket serverSocket = new ServerSocket(SERVER_PORT)) {
-            socket = serverSocket.accept();
-            while (!serverSocket.isClosed()) {
-                chatClientList.add(new ClientListener(socket));
+            String message;
+            while ((message = bufferedReader.readLine()) != null) {
+                System.out.println(message);
             }
+
         } catch (IOException e) {
             e.printStackTrace();
-        } finally {
-            try {
-                socket.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
         }
     }
 }
