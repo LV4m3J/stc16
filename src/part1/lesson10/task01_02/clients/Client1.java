@@ -7,6 +7,5 @@ public class Client1 {
     public static void main(String[] args) {
         ChatClient chatClient = new ChatClient(25051,"Client1");
         chatClient.run();
-
     }
 }

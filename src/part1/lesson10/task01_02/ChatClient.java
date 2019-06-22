@@ -1,46 +1,36 @@
 package part1.lesson10.task01_02;
 
-import javax.xml.crypto.Data;
+
 import java.io.*;
-import java.net.*;
-import java.util.Scanner;
+import java.net.Socket;
 
-public class ChatClient extends Thread {
+public class ChatClient {
 
-    private int CLIENT_PORT;
-    private String clientName;
+    private String ipAddrClient;
+    private int portClient;
+    Socket socket;
 
-    public int getClientPort() {
-        return CLIENT_PORT;
-    }
+    public ChatClient(String ipAddrClient, int portClient) {
+        this.ipAddrClient = ipAddrClient;
+        this.portClient = portClient;
 
-    public String getClientName() {
-        return clientName;
-    }
+        try(BufferedReader inputFromConsole = new BufferedReader(new InputStreamReader(System.in));
+            BufferedReader messageIn = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            BufferedWriter messageOut = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()))) {
 
-    public ChatClient(int clientPort, String name) {
-        CLIENT_PORT = clientPort;
-        clientName = name;
-    }
+            socket = new Socket(ipAddrClient,portClient);
 
-    @Override
-    public void run() {
-        try(DatagramSocket datagramSocket = new DatagramSocket();
-            BufferedReader bf = new BufferedReader(new InputStreamReader(System.in))){
-            
-            InetAddress inetAddress = InetAddress.getLocalHost();
-            String sendMessage = bf.readLine();
-            byte[] sendPacket = sendMessage.getBytes();
-            byte[] receivePacket = new byte[1024];
-            DatagramPacket sendDP = new DatagramPacket(sendPacket,sendPacket.length,inetAddress,ChatServer.getServerPort());
-            datagramSocket.send(sendDP);
-            DatagramPacket receiveDP = new DatagramPacket(receivePacket,receivePacket.length);
-            datagramSocket.receive(receiveDP);
-            String receiveMessage = new String(receiveDP.getData());
-            System.out.println(receiveMessage);
+            System.out.println("Enter u nickname - ");
+            String userName = inputFromConsole.readLine();
+            messageOut.write(userName);
+
+
+
+
+
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
 }
+
